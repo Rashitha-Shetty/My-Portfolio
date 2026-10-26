@@ -1,38 +1,56 @@
-# Rashitha Shetty — Portfolio Website
+# Rashitha Shetty — Portfolio Website & Multi-Architecture AWS Deployment
 
-A responsive personal portfolio website hosted on Amazon S3 as part of my hands-on AWS learning journey.
+A responsive personal portfolio website deployed across multiple Amazon Web Services (AWS) architectures—from serverless storage (S3) to a full Linux virtual server (EC2 with Apache).
 
-## Project Overview
+---
 
-This project demonstrates how to deploy a static website to AWS using Amazon S3.
+## 🌐 Live Website Links
 
-## Technologies Used
+- **S3 Static Deployment (Serverless):** [View S3 Portfolio Site](http://rashitha-portfolio-2026.s3-website-ap-southeast-2.amazonaws.com)
+- **EC2 Linux Server Deployment (IaaS):** `http://3.104.1.200/My-Portfolio/`
 
-- HTML5
-- CSS3
-- Amazon S3
-- Git and GitHub
+---
 
-## AWS Implementation
+## 🛠️ Technologies & Tools Used
 
-- Created an Amazon S3 general purpose bucket.
-- Uploaded the website files (`index.html` and `style.css`).
-- Enabled static website hosting.
-- Configured a bucket policy for public read access to website objects.
-- Tested the website on desktop and mobile devices.
+- **Frontend:** HTML5, CSS3
+- **Cloud Infrastructure:** AWS S3, AWS EC2 (Ubuntu 24.04 LTS), AWS VPC, Security Groups
+- **Web Server:** Apache2 HTTP Server
+- **Version Control & Remote Access:** Git, GitHub, SSH CLI, Linux Terminal
 
-## What I Learned
+---
 
-- Amazon S3 buckets and object storage
-- Static website hosting
-- Bucket policies and public access settings
-- Uploading and deploying website files to AWS
+## 🚀 AWS Architecture & Implementation Details
 
-## Live Website
+### Architecture 1: Amazon S3 Static Website Hosting (Serverless)
+* **Storage:** Created an Amazon S3 general-purpose bucket.
+* **Access Control:** Configured public bucket policies and disabled Block Public Access settings for web visibility.
+* **Hosting:** Enabled static website hosting with `index.html` as the root document.
+* **Testing:** Verified site responsiveness across mobile and desktop browsers.
 
-[View my portfolio](http://rashitha-portfolio-2026.s3-website-ap-southeast-2.amazonaws.com)
+### Architecture 2: AWS EC2 Linux Web Server (Virtual Server / IaaS)
+* **Instance Provisioning:** Launched an Ubuntu 24.04 LTS `t2.micro` EC2 instance in AWS.
+* **Network Security:** Configured custom Security Group inbound rules allowing:
+  - **SSH (Port 22):** Secure remote administrative terminal access via `.pem` key.
+  - **HTTP (Port 80):** Public web access (`0.0.0.0/0`).
+* **Web Server Configuration:** 
+  - Installed and enabled Apache2 HTTP web server daemons using Linux `systemctl` and `apt`.
+  - Cloned production portfolio files directly into Apache web directories using Git.
+* **Operations & Monitoring:** Inspected live access and error logs in `/var/log/apache2/`.
 
-## Future Improvements
+---
 
-- Configure HTTPS using Amazon CloudFront.
-- Review AWS usage and cost management.
+## 💡 What I Learned
+
+- S3 object storage vs. EC2 virtual computing.
+- Bucket policies, Security Groups, and network port management (Port 22 & Port 80).
+- Remote server management over SSH.
+- Linux package installation, system services (`systemctl`), and system logs.
+
+---
+
+## 📌 Future Improvements
+
+- Automate AWS infrastructure using **Terraform (Infrastructure as Code)**.
+- Secure HTTP web traffic with HTTPS/TLS certificates using Amazon CloudFront / Let's Encrypt.
+- Containerize application using **Docker** and build an automated **GitHub Actions CI/CD Pipeline**.
